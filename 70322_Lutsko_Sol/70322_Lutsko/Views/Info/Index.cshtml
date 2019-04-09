@@ -1,0 +1,15 @@
+﻿@model _70322_Lutsko.Models.PageListViewModel<MOVIES_DAL.Movie>
+@*@Html.Partial("PagerPArtial", Model)*@
+@using System.Text;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Каталог фильмов</h2>
+    <div id="Index">     
+    @Html.Partial("ListPartial", Model); 
+    </div>
+    <!-- Получить готовую разметку -->
+    
+    @section SidePanel { @Html.Action("Side", "Menu") }

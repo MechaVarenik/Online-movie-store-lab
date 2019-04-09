@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<!--Основная панель-->
+<div class="col-md-9">
+    <h2>Список</h2>
+    <ol type="A">
+        @for (int i = 1; i < 5; i++)
+        {
+            <li>элемент @i списка</li>
+        }
+    </ol>
+    <hr />
+
+    <h2>Форма</h2>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Get, new { @class = "form-horizontal" }))
+    {
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-8">
+                @Html.DropDownList("Colors")
+                <p>
+                    @Html.CheckBox("cBox1")Чек-бокс 1
+                </p>
+                <p>
+                    @Html.CheckBox("cBox1")Чек-бокс 2
+                </p>
+                <label>@Html.RadioButton("rButton", 1, true) Радио-1</label>
+                <label>@Html.RadioButton("rButton", 2, false) Радио-2</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputLogin" class="col-md-2 control-label">Логин:</label>
+            <div class="col-md-8">
+                @Html.TextBox("login", null, new
+           {
+               @class = "form-control",
+               placeholder = "Введите логин"
+           })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword" class="col-md-2 control-label">Пароль:</label>
+            <div class="col-md-8">
+                @Html.TextBox("password", null, new
+           {
+               @class = "form-control",
+               placeholder = "Введите пароль"
+           })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-8">
+                <button type="submit" formmethod="get" class="btn btn-default">Отправить</button>
+            </div>
+        </div>
+    }
+</div>
+<!--/Основная панель (конец)-->

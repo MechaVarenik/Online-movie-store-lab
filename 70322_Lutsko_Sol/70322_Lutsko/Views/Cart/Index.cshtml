@@ -1,0 +1,28 @@
+﻿@model _70322_Lutsko.Models.Cart
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Ваша корзина</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Наименование</th>
+            <th>Количество</th>
+            <th>Цена</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.GetItems())
+        {
+        <tr>
+            @*id="cart_@item.Movie.MovieId"*@
+            <td>@item.Movie.MovieName</td>
+            <td>@item.Quantity</td>
+            <td>@(item.Movie.Price * item.Quantity)</td>
+        </tr>}
+    </tbody>
+</table>
+<a href="@TempData["returnUrl"]" class="btn btn-default">Вернуться к меню</a>

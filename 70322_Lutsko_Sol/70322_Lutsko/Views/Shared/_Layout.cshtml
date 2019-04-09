@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+
+
+    <title>@ViewBag.Title</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <!--Заголовок страницы-->
+    <div class="header-strip">
+        <!--Панель аутентификации-->
+        <div class="container">
+            @Html.Action("UserInfo", "Menu")
+        </div> <!--Панель аутентификации (конец)-->
+        <!-- панель навигации-->
+        <div class="container">
+            <div class="navbar navbar-inverse" role="navigation">
+                <div class="logo">
+                    <a class="navbar-brand" href="http://localhost:19189/">Люцко</a>
+                </div>
+                @Html.Action("Main", "Menu", new { c = Request.RequestContext.RouteData.Values["controller"], })
+            </div>
+        </div><!--панель навигации (конец)-->
+    </div><!--Заголовок страницы(конец)-->
+    <!--Содержимое сайта-->
+    <div class="main-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-3">
+                    <h2>@ViewBag.MyText</h2>
+                </div>
+            </div>
+            <div class="row">
+
+                <!--Левая боковая панель-->
+                <div class="col-md-3">
+                    @RenderSection("SidePanel", required: false)
+                </div>
+                <!--/Левая боковая панель (конец)-->
+                <!--Основная панель-->
+                <div class="col-md-9">
+                    @RenderBody()
+                </div>
+                <!--/Основная панель (конец)-->
+
+            </div>
+        </div><!--Содержимое сайта (конец)-->
+    </div>
+
+    <!--Подвал страницы-->
+    <div class="footer-strip">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h6>Kарта сайта</h6>
+                    <ul>
+                        <li>@Html.ActionLink("Домой", "Index", "Home")</li>
+                        <li class="active">
+                            @Html.ActionLink("Фильмы", "Index", "Info")
+                        </li>
+                        <li>@Html.ActionLink("Администрирование", "Index", "Admin")</li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-md-offset-6">
+                    <h6>Социальные сети</h6>
+                    <a href="http://vk.com"
+                       class="social-icon vk"></a>
+                    <a href="http://twitter.com"
+                       class="social-icon twitter"></a>
+                    <a href="http://facebook.com"
+                       class="social-icon facebook"></a>
+                </div>
+            </div>
+        </div>
+    </div><!--Подвал страницы (конец)-->
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    @section Scripts {
+        <script src="~/Scripts/jquery.validate.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script> }
+</body>
+</html>

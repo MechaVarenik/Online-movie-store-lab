@@ -1,0 +1,7 @@
+﻿@model _70322_Lutsko.Models.Cart
+
+<a href="@Url.Action("Index","Cart",new { returnUrl=Request.Path})">
+    @Model.GetTotal() Рублей (@Model.GetItems().Sum(i => i.Quantity))
+    <span class="glyphicon glyphicon-spopping-cart"></span>
+</a>
+
